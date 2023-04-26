@@ -163,10 +163,10 @@
 <h1 id="normalizing-flows">Normalizing Flows</h1>
 <p>Eq \ref{eq:elbo}의 bound에서 최적의 variational distribution은 \(q_\phi(\mathbf{z}|\mathbf{x})=p_\theta(\mathbf{z}|\mathbf{x})\)일 때 성립한다. 하지만 independent Gaussian과 같은 일반적인 \(q(\cdot)\)의 세팅으로는 이러한 조건을 충족시킬 수 없다. 어떻게 \(q(\cdot)\)를 모델링하면 flexible하게 만들 수 있을까?</p>
 
-<p>확률분포 \(q(\mathbf{z})\)를 갖는 간단한 random variable \(\mathbf{z}\)에 대한 변수변환(change of variables)를 이용해 접근해보자. 먼저 invertible, smooth mapping \(f:\mathbb{R}^d\rightarrow\mathbb{R}^d\)를 고려하자. Inverse map은 \(g\)로 표현하자(\(g\circ f(\mathbf{z})=\mathbf{z}\)). 이 transformation을 통해 우리는 \(\mathbf{z}^'=f(\mathbf{z})\)를 생각할 수 있다.</p>
+<p>확률분포 \(q(\mathbf{z})\)를 갖는 간단한 random variable \(\mathbf{z}\)에 대한 변수변환(change of variables)를 이용해 접근해보자. 먼저 invertible, smooth mapping \(f:\mathbb{R}^d\rightarrow\mathbb{R}^d\)를 고려하자. Inverse map은 \(g\)로 표현하자(\(g\circ f(\mathbf{z})=\mathbf{z}\)). 이 transformation을 통해 우리는 \(\mathbf{z}'=f(\mathbf{z})\)를 생각할 수 있다.</p>
 
 <p>\begin{equation}
-q(\mathbf{z}^’)=q(\mathbf{z})|\det\pdv{f^{-1}}{\mathbf{z}^’}|=|\det\pdv{f}{\mathbf{z}}|^{-1}
+q(\mathbf{z}’)=q(\mathbf{z})|\det\pdv{f^{-1}}{\mathbf{z}^’}|=|\det\pdv{f}{\mathbf{z}}|^{-1}
 \end{equation}</p>
 
 <p>이 변수변환을 순차적으로(successively) 고려해보자. \(K\)개의 \(f_k\)를 고려하여 다음과 같이 random variable과 확률분포를 정의할 수 있다.</p>
